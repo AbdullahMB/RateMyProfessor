@@ -1,0 +1,117 @@
+body {
+  background-color: grey;
+
+}
+
+.ProfContrainer{
+  padding-top: 0px;
+  box-sizing: border-box;
+  background-color: white;
+  height: 500px;
+  margin: 5%;
+
+}
+
+#ProfPicture {
+
+  width: 20%;
+  border-color: black;
+  margin: 50px;
+  float: left;
+  margin-top: 100px;
+  margin-left: 80px;
+  margin-right: 10px;
+
+}
+
+#ProfBio{
+  color: grey;
+  padding-left: 20px;
+  border-left: thick solid grey;
+  font-size: 28px;
+  width: 20%;
+  margin: 50px;
+  float: left;
+  margin-right: 0px;
+}
+#ProfName{
+  color: black;
+}
+#ProdUniversity{
+  color: black;
+}
+#ProfDepartment{
+  color:black;
+}
+#profMajor{
+  color:black;
+}
+#ProfRating{
+  color: grey;
+  padding-left: 20px;
+  border-left: thick solid grey;
+  font-size: 30px;
+  width: 20%;
+  margin: 50px;
+  float: left;
+
+}
+#OverAllRating{
+  color: black;
+  font-size: 100px;
+}
+#Difficulty {
+  color: black;
+  font-size: 40px;
+}
+
+.RateContainer{
+  font-size: 20px;
+  box-sizing: border-box;
+  background-color: white;
+  height: 270px;
+  margin: 5%;
+  padding: 2%;
+}
+
+textarea {
+  font-size: 18px;
+  width: 350px;
+  height: 150px;
+}
+.comment-box {
+  width: 20%;
+  border-color: black;
+  margin: 50px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 40px;
+}
+.overall-Box {
+  width: 20%;
+  border-color: black;
+  margin: 50px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 150px;
+  margin-right: 10px;
+}
+.difficulty-box {
+  width: 20%;
+  border-color: black;
+  margin: 50px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 0px;
+}
+.rate-button-box {
+  width: 20%;
+  border-color: black;
+  margin: 0px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 500px;
+  margin-right: 10px;
+}

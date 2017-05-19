@@ -1,0 +1,61 @@
+
+
+/*-----------Anchors-------*/
+
+div a{
+
+  font-size:16px;
+  text-decoration: none;
+    color: white;
+}
+a.HomeButton:link {
+  color: #009688;
+  font-family:fantasy;
+}
+a.top-right-button:link {
+  font-family:sans-serif;
+}
+a.top-right-button:hover {
+  padding: 4px;
+  background-color: #009688;
+}
+
+
+
+/*a.team:hover {
+
+}*/
+
+
+.searchBar {
+    width: 75%;
+    background-color: grey;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 8px 0px;
+    background-repeat: no-repeat;
+    padding: 2px 20px 0px 40px;
+    margin-top: 4px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.top-Left-Corner{
+  padding-left: 1%;
+  width:24%; display:inline-block;
+  text-align: left;
+}
+.top-right-button{
+  width: auto; display:inline-block;
+  text-align: right;
+}
+.topBar{
+  font-size:0; /* Fixes inline block spacing */
+  background: black;
+  width:100%;
+  overflow: auto;
+}

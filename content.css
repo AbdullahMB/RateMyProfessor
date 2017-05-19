@@ -1,0 +1,73 @@
+body {
+  background-color: grey;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.contrainer{
+  text-align: center;
+  background-image:url(https://drscdn.500px.org/photo/77120359/q%3D80_m%3D1500/7263e00a90830426f049f607753b30cf);
+
+}
+.contrainerSignUp{
+  text-align: center;
+}
+
+.boxsizing{
+  display: inline-block;
+}
+#first_name {
+  width: 40%
+
+}
+#last_name {
+  width: 40%
+}
+#password {
+  width: 40%
+}
+#Email {
+  width: 40%
+}
+
+.bigTitle{
+  font-size: ;
+  font-family:monospace;
+  margin: 0%;
+  padding-top: 5%;
+  overflow: auto;
+
+}
+.container2{
+  height: 40em;
+
+  align-items: center;
+  justify-content: center;
+
+}
+.findButton{
+  padding: 3px;
+  border-radius: 12px;
+  font-size: 200%;
+  font-family:sans-serif;
+  background-color: #009688;
+  color: white;
+}
+
+
+.middle-menus{
+  display: inline-block;
+  margin: 0%;
+  padding-top: 3%;
+  padding-right: 1%;
+  padding-left: 1%;
+  padding-bottom: 5%;
+  overflow: auto;
+  border-radius: 10px;
+
+
+}
