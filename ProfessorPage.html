@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="top.css">
+<link rel="stylesheet" type="text/css" href="content.css">
+<link rel="stylesheet" type="text/css" href="myStyle2.css">
+
+
+</head>
+
+
+
+<body>
+<div class="topBar"><!-- Top elements start here -->
+
+  <span class="top-Left-Corner">
+      <a href="www.google.com" class= "HomeButton">Rate Your Professor</a>
+  </span>
+
+  <span style="display:inline-block;width:50%;text-align:center">
+    <form>
+      <input type="text" class="searchBar" name="search" placeholder="Search For A Professor...">
+    </form>
+  </span>
+
+  <span style= "display:inline-block;width:12%; text-align:right;padding-right: 0%; ">
+        <a href="" class="top-right-button">Log in</a>
+  </span>
+  <span style= "display:inline-block;width:12%; text-align:right;padding-left: 0px;; padding-right: 2px;">
+        <a href="" class="top-right-button">Sign-up</a>
+  </span>
+
+
+ </div><!-- Top elements ended here -->
+
+
+
+ <div class="ProfContrainer">
+    <span id="ProfPicture">
+      <img src="prof.jpg" alt="Professor Picture" width="200px">
+    </span>
+
+
+    <span id="ProfBio">
+      <span>
+        Name: <b id="ProfName">Ahmed Alqarni</b>
+        <br><br>
+        University: <b id="ProdUniversity">KFUPM</b>
+        <br><br>
+        Department: <b id="ProfDepartment">Math</b>
+        <br><br>
+        Major: <b id="profMajor">Mathmatics</b>
+      </span>
+    </span>
+
+      <span id="ProfRating">
+        <span>
+          Overall Quality: <br><b id="OverAllRating">4.1</b>/5
+          <br><br>Difficulty: <br><b id="Difficulty">4.1</b>/5
+        </span>
+    </span>
+ </div>
+
+
+ <div class="RateContainer">
+   <form>
+   <b>Rate This Professor</b><br><br>
+    <span class="comment-box">
+      <textarea placeholder="Write your comment here..."></textarea>
+    </span>
+
+    <span class="overall-Box">
+      <p>Select the overall quality:</p>
+      <br>
+      <select id="overallrating-Selection" >
+        <ul>
+          <option value="">Worst Professor</option>
+          <option value="">Professor Get's F too</option>
+          <option value="">Mediocre</option>
+          <option value="">Solid Chice</option>
+          <option value="">Best Professor</option>
+        </ul>
+      </select>
+    </span>
+
+    <span class="difficulty-box">
+      <p>Select the difficulty:</p>
+      <br>
+      <select id="difficulty-Selection"  >
+        <ul>
+          <option value="">Come and you'll pass</option>
+          <option value="">Easy A</option>
+          <option value="">Average grade</option>
+          <option value="">A lot of work</option>
+          <option value="">Difficult to Pass</option>
+        </ul>
+        </select>
+
+    </span>
+    <span class="">
+      <button value="find" class="findButton">Rate</button>
+    </span>
+  </form>
+
+
+
+ </div>
+
+</body>
+</html>
