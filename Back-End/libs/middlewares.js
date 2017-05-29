@@ -21,7 +21,7 @@ module.exports = app => {
   }));
   app.use(helmet());
   app.use(cors({
-    origin: ["http://localhost"],// web
+    origin: ["http://localhost:8888"],// web
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true

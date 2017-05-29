@@ -6,7 +6,8 @@ module.exports = (sequelize, DataType) => {
             autoIncrement: true
         },
         name: {
-            type: DataType.STRING
+            type: DataType.STRING,
+            unique: true
         },
         department: {
             type: DataType.STRING,

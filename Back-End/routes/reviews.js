@@ -9,7 +9,7 @@ module.exports = app => {
             req.body.user_id = req.user.id;
             req.body.professor_id = req.params.id;
             Reviews.create(req.body)
-                .then(result => res.json(result))
+                .then(result => res.redirect('http://localhost:8888/rate/professorRating.html?id='+req.body.professor_id))
                 .catch(error => {
                     res.status(412).json({msg: error.message});
                 });

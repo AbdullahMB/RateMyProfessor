@@ -14,11 +14,10 @@ module.exports = app => {
             const payload = {id: user.id};
             const tokenv = jwt.encode(payload, cfg.jwtSecret);
             res.cookie('jwt', tokenv);
-            res.json({
-              token: tokenv
-            });
+
+            res.redirect('http://localhost:8888/rate/home.html');
           } else {
-            res.sendStatus(401);
+            res.redirect('http://localhost:8888/rate/Login.html');
           }
         })
         .catch(error => res.sendStatus(401));

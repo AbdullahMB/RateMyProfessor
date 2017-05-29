@@ -9,7 +9,7 @@ module.exports = {
   password: "root",
   params: {
     // mac:8889, Windows:3306
-    port: 3306,
+    port: 8889,
     dialect: "mysql",
     logging: (sql) => {
       logger.info(`[${new Date()}] ${sql}`);

@@ -19,6 +19,9 @@ module.exports = (sequelize, DataType) => {
                 key: "id"
             }
         },
+        title: {
+            type: DataType.STRING
+        },
         comments: {
             type: DataType.TEXT
         },
