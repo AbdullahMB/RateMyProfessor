@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="top.css">
+<link rel="stylesheet" type="text/css" href="content.css">
+<link rel="stylesheet" type="text/css" href="myStyle2.css">
+<script type="text/javascript" src="jQ.js"></script>
+
+
+</head>
+
+
+
+<body>
+  <script type="text/javascript">
+
+
+      var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+    var pid = getUrlParameter('id');
+    console.log(pid);
+    function currentURL(){
+      return "http://localhost:3000/api/user/review/professor/"+pid;
+    }
+
+    window.onload = function() {
+        document.stupidForm.action = "";
+    }
+
+    $(function() {
+      $('stupidForm').submit(function(){
+          $('stupidForm').attr('action',currentURL());
+
+        $.post(currentURL(), function() {
+          window.location = "ProfessorPage.html?id="+pid;
+
+        });
+        return false;
+      });
+    });
+  </script>
+
+<div class="topBar"><!-- Top elements start here -->
+
+  <span class="top-Left-Corner">
+      <a href="www.google.com" class= "HomeButton">Rate Your Professor</a>
+  </span>
+
+  <span style="display:inline-block;width:50%;text-align:center">
+    <form>
+      <input type="text" class="searchBar" name="search" placeholder="Search For A Professor...">
+    </form>
+  </span>
+
+  <span style= "display:inline-block;width:12%; text-align:right;padding-right: 0%; ">
+        <a href="" class="top-right-button">Log in</a>
+  </span>
+  <span style= "display:inline-block;width:12%; text-align:right;padding-left: 0px;; padding-right: 2px;">
+        <a href="" class="top-right-button">Sign-up</a>
+  </span>
+
+
+ </div><!-- Top elements ended here -->
+
+
+
+ <div class="ProfContrainer">
+    <span id="ProfPicture">
+      <img src="prof.jpg" alt="Professor Picture" width="200px">
+    </span>
+
+
+    <span id="ProfBio">
+      <span>
+        Name: <b id="ProfName"></b>
+        <br><br>
+        University: <b id="ProdUniversity"></b>
+        <br><br>
+        Department: <b id="ProfDepartment"></b>
+      </span>
+    </span>
+
+      <span id="ProfRating">
+        <span>
+          Overall Quality: <br><b id="OverAllRating"></b>/5
+          <br><br>Difficulty: <br><b id="Difficulty"></b>/5
+        </span>
+    </span>
+ </div>
+
+
+ <div class="RateContainer">
+   <form name="stupidForm" id="reviewForm" method="post" >
+
+
+   <b>Rate This Professor</b><br><br>
+    <span class="comment-box">
+      <textarea name="comments" class ="box" placeholder="Write your comment here..." form="reviewForm" ></textarea>
+    </span>
+
+    <span class="overall-Box">
+      <p>Select the overall quality:</p>
+      <br>
+      <select id="overallrating-Selection" form="reviewForm" name="rating">
+        <ul>
+          <option  value="1">Worst Professor</option>
+          <option  value="2">Professor Get's F too</option>
+          <option  value="3">Mediocre</option>
+          <option  value="4">Solid Chice</option>
+          <option  value="5">Best Professor</option>
+        </ul>
+      </select>
+    </span>
+
+    <span class="difficulty-box">
+      <p>Select the difficulty:</p>
+      <br>
+      <select id="difficulty-Selection" form="reviewForm" name="difficulty">
+        <ul>
+          <option value="1">Come and you'll pass</option>
+          <option value="2">Easy A</option>
+          <option value="3">Average grade</option>
+          <option value="4">A lot of work</option>
+          <option value="5">Difficult to Pass</option>
+        </ul>
+        </select>
+
+    </span>
+    <span class="">
+      <button  type="submit" id="review" onclick="?" value="find" class="findButton" form="reviewForm" >Rate</button>
+    </span>
+
+</form>
+<div class="RateContainer" id="comments">
+
+</div>
+
+ </div>
+
+<script>
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+      var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+          sURLVariables = sPageURL.split('&'),
+          sParameterName,
+          i;
+
+      for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+
+          if (sParameterName[0] === sParam) {
+              return sParameterName[1] === undefined ? true : sParameterName[1];
+          }
+      }
+    };
+    var pid = getUrlParameter('id');
+
+    function goBack(){
+      location.href = "ProfessorPage.html?id="+pid;
+    }
+
+    var jqxhr_professor = $.get( "http://localhost:3000/api/professor/"+pid, function(data) {
+      var professor = data;
+      console.log(professor);
+        $('#ProfName').text(professor.name);
+        $('#ProdUniversity').text(professor.university);
+        $('#ProfDepartment').text(professor.department);
+    });
+   var jqxhr_ratings = $.get( "http://localhost:3000/api/reviews/professor/"+pid, function(data_rate) {
+      var rate = data_rate;
+      console.log(rate);
+
+
+      var sumRatings_rating=0;
+      var sumRatings_difficulty=0;
+
+      for(var i=0; i<rate.length;i++){
+        sumRatings_rating=sumRatings_rating+rate[i].rating;
+        sumRatings_difficulty=sumRatings_difficulty+rate[i].difficulty;
+        $('#comments').append('\
+                       <p value="'+rate[i]["comments"]+'">'+rate[i]["comments"]+'</p>\
+                       ');
+      }
+
+
+      var average_ratings=Math.round((sumRatings_rating/rate.length)*100)/100;
+      var average_difficulty=Math.round((sumRatings_difficulty/rate.length)*100)/100;
+
+
+      if(isNaN(average_ratings)){
+        $('#OverAllRating').text("NA");
+        $('#Difficulty').text("NA");
+      }else{
+        $('#OverAllRating').text(average_ratings);
+        $('#Difficulty').text(average_difficulty);
+      }
+});
+
+
+$("#review").click(function(){
+  console.log("I am in!");
+  $.post('http://localhost:3000/api/user/review/professor/'+pid, $('#reviewForm').serialize(), function(){
+    document.location.href = 'home.html';		// if success
+  })
+
+})
+</script>
+
+</body>
+</html>

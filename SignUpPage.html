@@ -5,7 +5,7 @@
 
 <link rel="stylesheet" type="text/css" href="top.css">
 <link rel="stylesheet" type="text/css" href="content.css">
-
+<script type="text/javascript" src="jQ.js"></script>
 
 
 
@@ -47,36 +47,43 @@
      <p class="bigTitle"><h1><b>Sign-up</b></h1></p>
      <br>
      <div class="">
-  <form class="">
+  <form id="register_form" method="post" action="http://localhost:3000/api/register">
     <div class="">
       <div class="">
-        <input placeholder="First Name" id="first_name" type="text" >
-        <label for="first_name"></label>
+        <input placeholder="Name" id="first_name" type="text" name="name">
+        <label for="name"></label>
       </div>
       <br>
       <div class="">
-        <input id="last_name" placeholder="Last Name" type="text" >
-        <label for="last_name"></label>
+        <input id="last_name" placeholder="User Name" type="text"name="userName" >
+        <label for="user_name"></label>
       </div>
       <br>
+      <div class="">
+        <input id="major" placeholder="Major" type="text" name="major">
+        <label for="major"></label>
+      </div>
+      <br />
     </div>
     <div class="">
       <div class="">
-        <input id="password" placeholder="password "type="password">
+        <input id="password" placeholder="password "type="password" name="password">
         <label for="password"></label>
       </div>
     </div>
     <br>
     <div class="">
       <div class="">
-        <input id="email" placeholder="Email" type="email">
+        <input id="email" placeholder="Email" type="email" name="email">
         <label for="email"></label>
       </div>
     </div>
 
     </div>
     <br>
-    <button value="find" class="findButton">Sign up</button>
+    <div>
+      <button id="registerBtn" class="findButton">Register</button>
+    </div>
   </form>
 </div>
 
@@ -84,6 +91,23 @@
 
    </div>
  </div>
+
+<script>
+  $("#registerBtn").click(function(){
+    console.log("I am in!");
+    $.post('http://localhost:3000/api/register', $('#register_form').serialize(), function(){
+      document.location.href = 'home.html?created=true';		// if success
+    })
+    .fail(function() {
+      Materialize.toast('Registration Failed, Try Again', 4000);
+      })
+  })
+</script>
+
+<script>
+
+</script>
+
 
 </body>
 </html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="top.css">
+<link rel="stylesheet" type="text/css" href="content.css">
+<script type="text/javascript" src="jQ.js"></script>
+
+</head>
+
+
+
+<body>
+<div class="topBar"><!-- Top elements start here -->
+
+  <span class="top-Left-Corner">
+      <a href="www.google.com" class= "HomeButton">Rate Your Professor</a>
+  </span>
+
+  <span style="display:inline-block;width:50%;text-align:center">
+    <form>
+      <input type="text" class="searchBar" name="search" placeholder="Search For A Professor...">
+    </form>
+  </span>
+
+  <span style= "display:inline-block;width:12%; text-align:right;padding-right: 0%; ">
+        <a href="" class="top-right-button">Log in</a>
+  </span>
+  <span style= "display:inline-block;width:12%; text-align:right;padding-left: 0px;; padding-right: 2px;">
+        <a href="" class="top-right-button">Sign-up</a>
+  </span>
+
+
+ </div><!-- Top elements ended here -->
+
+
+
+ <div class="contrainer">
+
+
+   <div class="container2">
+     <p class="bigTitle"><h1><b>find what you are looking for</b></h1></p>
+
+     <form action="abcdefg.php">
+
+       <!-- <div  class="middle-menus">
+       <select id="Universites" list="Universites" onchange="myFunction()" name="Universites" placeholder="Choose University...">
+         <option value="">All</option>
+         </select>
+     </div>
+
+     <div  class="middle-menus">
+       <select id="Departments" list="Departments" onchange="myFunction()" name="Departments" placeholder="Choose Department...">
+          <option value="">All</option>
+     </select>
+   </div> -->
+
+
+    <br>
+     </form>
+
+
+<br><br>
+     <div class="">
+       <input type="text" id="myInput" onkeydown="myFunction()" placeholder="Search for names..">
+
+        <ul id="myUL">
+
+        </ul>
+     </div>
+
+   </div>
+ </div>
+
+
+
+ </div>
+
+<script>
+  var jqxhr_professors = $.get( "http://localhost:3000/api/professors", function(data) {
+    var professors = data;
+  var universities=new Array();
+  var departments=new Array();
+
+    for (var s = 0; s < professors.length; s++) {
+
+      if(!departments.includes(professors[s]["department"])){
+      $('#Departments').append('\
+                     <option value="'+professors[s]["department"]+'">'+professors[s]["department"]+'</option>\
+                     ');
+                     departments[s]=professors[s]["department"];
+
+}
+      if(!universities.includes(professors[s]["university"])){
+       $('#Universites').append('\
+                      <option value="'+professors[s]["university"]+'">'+professors[s]["university"]+'</option>\
+                      ');
+                    universities[s]=professors[s]["university"];
+                   }
+
+       $('#myUL').append('\
+                      <li value="'+professors[s]["name"]+'"><a href="ProfessorPage.html?id='+professors[s]["id"]+'" class="header">'+professors[s]["name"]+'</a>   -   <span>' +professors[s]["department"]+'</span>   -   <span>' +professors[s]["university"]+' </span></li>\
+                      ');
+
+            }
+
+
+
+  })
+
+  function myFunction() {
+      // Declare variables
+      var prof, filter_prof, filter_depar, filter_univ, ul, li, a, i, univ, depar;
+      prof = document.getElementById('myInput');
+      //univ = document.getElementById('Universites');
+      //depar = document.getElementById('Departments');
+
+      filter_prof = prof.value.toUpperCase();
+      //filter_depar = depar.value.toUpperCase();
+      //filter_univ = univ.value.toUpperCase();
+      ul = document.getElementById("myUL");
+      li = ul.getElementsByTagName('li');
+
+      // Loop through all list items, and hide those who don't match the search query
+      for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0].innerHTML.toUpperCase();
+          s1 = li[i].getElementsByTagName("span")[0];
+          s2 = li[i].getElementsByTagName("span")[1];
+
+          if (a.indexOf(filter_prof) > -1||s1.innerHTML.indexOf(filter_prof) > -1||s2.innerHTML.indexOf(filter_prof) > -1) {
+              li[i].style.display = "";
+          }else {
+              li[i].style.display = "none";
+          }
+      }
+  }
+
+
+
+
+</script>
+
+</body>
+</html>

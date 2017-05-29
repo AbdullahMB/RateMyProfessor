@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>Explore</title>
 
   <!-- Compiled and minified CSS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="MyStyle.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <script src="jquery.cookie.js" type="text/javascript"></script>
 
 
   </head>
@@ -18,8 +19,14 @@
     <!-- top bar -->
     <nav>
     <div class="nav-wrapper teal lighten-0">
-      <a href="#!" class="brand-logo">RateMyProfesor</a>
+      <a href="home.html" class="brand-logo">RateMyProfesor</a>
       <ul class="right hide-on-med-and-down">
+        <li class="logged"><a href="Login.html">Login</a></li>
+       <li class="logged"><a href="signUp.html">Signup</a></li>
+       <li class="LOut" ><a onclick="logout()"></option>Sign Out</a></li>
+      </ul>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="explore.html"><i class="material-icons left">search</i>Find a Professor</a></li>
       </ul>
     </div>
   </nav>
@@ -29,7 +36,7 @@
     <div class="nav-wrapper teal lighten-1">
       <form>
         <div class="input-field">
-          <input id="search" type="search" required >
+          <input id="search" onkeydown="myFunction()" type="search" required >
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
         </div>
@@ -38,62 +45,131 @@
   </nav>
 
 
- 
+
 
 
 
  <h2 class="header center">Search Results</h2>
-     
 
 
 
- <div class="row ">
 
-      <div class="col s6">
-     <div class="card horizontal">
-      <div class="card-image">
-        <img src="http://www.iconninja.com/files/18/892/1024/insurer-face-corporate-lawyer-notary-person-woman-broker-icon.png">
-      </div>
-      <div class="card-stacked ">
-        <div class="card-content">
-            <p>NAME : Blah </br>
-               UNIVERSITY : blah </br>
-               DEPARTMENT : Blah           
-          </p>
-        </div>
-        <div class="card-action">
-            <a href="#"><font color="#009688">More Details</font></a>
-        </div>
-      </div>
-    </div>
-      </div>
+ <div id="PDiv" class="row ">
 
-<!--
-      <div class="col s6">
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="http://www.iconninja.com/files/18/892/1024/insurer-face-corporate-lawyer-notary-person-woman-broker-icon.png">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-            <p>NAME : Blah </br>
-               UNIVERSITY : blah </br>
-               DEPARTMENT : Blah           
-          </p>
-        </div>
-        <div class="card-action ">
-            <a href="#"><font color="#009688">More Details</font></a>
-        </div>
-      </div>
-    </div>
-  </div>
     </div>
 
--->
+    <!--Footer-->
+    <footer class="page-footer white">
+              <div class="container">
+                <div class="row">
+                  <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="teal-text text-lighten-0">This website was created on 2017-05-29.</p>
+                  </div>
+                  <div class="col l4 offset-l2 s12">
+                    <h5 class="teal-text text-lighten-0">Our team:</h5>
+                    <ul>
+                      <li><a class="teal-text text-lighten-0" href="#!">Ahmed AlQarni</a></li>
+                      <li><a class="teal-text text-lighten-0" href="#!">Abdullah Babaier</a></li>
+                      <li><a class="teal-text text-lighten-0" href="#!">Waleed Humayed</a></li>
+                      <li><a class="teal-text text-lighten-0" href="#!">Ibrahim Alshaya</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="footer-copyright teal lighten-0">
+                <div class="container">
+                <a class="white-text right" href="#!">More Links</a>
+                </div>
+              </div>
+            </footer>
+
+      <script>
+
+
+      var glob;
+        var jqxhr_professors = $.get("http://localhost:3000/api/professors", function(data) {
+          var professors = data;
+          glob = professors.length;
+        var universities=new Array();
+        var departments=new Array();
+
+          for (var s = 0; s < professors.length; s++) {
+
+
+             $('#PDiv').append('\<div id="a'+s+'" class="col s6">\
+            <div class="card horizontal">\
+             <div class="card-image">\
+               <img src="http://www.iconninja.com/files/18/892/1024/insurer-face-corporate-lawyer-notary-person-woman-broker-icon.png">\
+             </div>\
+             <div class="card-stacked ">\
+               <div class="card-content" id="myUL">\
+                   <p><b> NAME: </b>'+professors[s]["name"]+' </br>\
+                      <b> UNIVERSITY: </b>'+professors[s]["university"]+' </br>\
+                      <b> DEPARTMENT: </b>'+professors[s]["department"]+' \
+                 </p>\
+               </div>\
+               <div class="card-action">\
+                   <a href="professorRating.html?id='+professors[s]["id"]+'""><font color="#009688">More Details</font></a>\
+               </div>\
+             </div>\
+           </div>\
+             </div>\
+                            ');
+
+                  }
 
 
 
+        })
 
-      <!-- Compiled and minified JavaScript -->
+        function myFunction() {
+            // Declare variables
+            var prof, filter_prof, filter_depar, filter_univ, ul, li, a, i, univ, depar;
+            prof = document.getElementById('search');
+            filter_prof = prof.value.toUpperCase();
+
+
+            divv = document.getElementById("PDiv");
+            par = divv.getElementsByTagName("p")
+
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < par.length; i++) {
+              dis = document.getElementById("a"+i);
+                a = par[i].innerHTML.toUpperCase();
+
+                console.log(dis);
+
+                if (a.indexOf(filter_prof) > -1) {
+                  $("#a"+i).show();
+                }else {
+                  $("#a"+i).hide();
+                }
+
+            }
+        }
+
+
+        if (!!$.cookie('jwt')) {
+
+        $(".logged").hide();
+        $(".LOut").show();
+
+        console.log("hiiiiiiiiii");
+        }else {
+        $(".LOut").hide();
+
+        }
+        function logout(){
+
+        $.removeCookie('jwt', { path: '/' });
+
+        window.location="home.html" ;
+
+        }
+
+
+      </script>
+
   </body>
 </html>

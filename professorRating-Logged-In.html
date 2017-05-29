@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>RateMyProfessor</title>
+
+
+      <!-- Compiled and minified CSS -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="MyStyle.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+      <script>
+      $(document).ready(function(){
+          $('select').material_select();
+          $('#textarea1').trigger('autoresize');
+        });
+      </script>
+
+  </head>
+  <body>
+
+    <!-- top bar -->
+    <nav>
+    <div class="nav-wrapper teal lighten-0">
+      <a href="#!" class="brand-logo">&nbspRateMyProfesor</a>
+      <ul class="right hide-on-med-and-down">
+     <li><a href="sass.html">SignOut</a></li>
+     <!-- Dropdown Trigger -->
+    </ul>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sass.html"><i class="material-icons left">search</i>Find a Professor</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <br>
+
+  <div class="row center">
+   <div class="col s4">
+     <img src="professor_Image.jpg" width="250px"alt="Professor">
+
+   </div>
+   <div class="col s4 center">
+     <br>
+     <br>
+     <i class=" medium material-icons center icon-lighten">perm_identity</i>
+     <p class="ProfDetails">Name: <b id="ProfName" class="profInsideDetails">Ahmed Alqarni</b></p>
+     <p class="ProfDetails">University: <b id="ProdUniversity" class="profInsideDetails">KFUPM</b></p>
+     <p class="ProfDetails">Department: <b id="ProfDepartment" class="profInsideDetails">Computer Science</b></p>
+
+   </div>
+
+   <div class="col s4 center">
+     <br>
+     <br>
+     <i class="medium material-icons icon-lighten">thumbs_up_down</i>
+     <p class="ProfDetails">Overall Rating: <br><b id="OverAllRating" style=" font-size: 300%;color:black">4.5</b>/5</p>
+     <p class="ProfDetails">Difficulty: <br><b id="Difficulty" style=" font-size: 150%;color:black">4.1</b>/5</p>
+   </div>
+   <hr>
+ </div>
+
+<!--Comments Section-->
+ <div class="row">
+   <p class="Headers11">&nbsp&nbsp&nbsp <b>Comments: </b></p>
+
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Best Professor Ever</span>
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <span>Overall Rating: <b id="OverAllRatingComment" style="font-size:180%">4.5</b></span>
+            <span>&nbsp&nbsp&nbsp&nbsp&nbsp Difficulty: <b id="DifficultyComment" style="font-size:120%">2.5</b></span>
+
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Very Bad Professor</span>
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <span>Overall Rating: <b id="OverAllRatingComment" style="font-size:180%">1.44</b></span>
+            <span>&nbsp&nbsp&nbsp&nbsp&nbsp Difficulty: <b id="DifficultyComment" style="font-size:120%">4.5</b></span>
+
+          </div>
+        </div>
+      </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <hr>
+
+    <!--Write a comment-->
+    <div class="row ">
+         <p class="Headers11">&nbsp&nbsp&nbsp <b>Rate This Professor: </b></p>
+         <div class="col s12 m12">
+           <div class="card  blue-grey darken-1">
+             <div class="card-content white-text">
+
+               <div class="input-field col s12">
+                 <input value="" id="UserSubject" type="text" class="validate">
+                 <label class="active" for="UserSubject">Write your subject here...</label>
+               </div>
+
+
+
+                   <div class="row">
+                     <div class="input-field col s12">
+                       <textarea id="UserComments" class="materialize-textarea"></textarea>
+                       <label for="UserComments">Write your comments here...</label>
+                </div>
+              </div>
+
+
+
+             </div>
+             <div class="card-action">
+
+            <div class="input-field col s6">
+               <select id="overallrating-Selection">
+                 <option value="" disabled selected>Choose overall quality</option>
+                 <option value="1">Worst Professor</option>
+                 <option value="2">Professor Get's F too</option>
+                 <option value="3">Mediocre</option>
+                 <option value="4">Solid Chice</option>
+                 <option value="5">Best Professor</option>
+               </select>
+               <label>Overall</label>
+             </div>
+
+             <div class="input-field col s6">
+                <select id="difficulty-Selection">
+                  <option value="" disabled selected>Choose difficulty</option>
+                  <option value="1">Come and you'll pass</option>
+                  <option value="2">Easy A</option>
+                  <option value="3">Average grade</option>
+                  <option value="4">A lot of work</option>
+                  <option value="5">Difficult to Pass</option>
+                </select>
+                <label>Difficulty</label>
+              </div>
+
+
+              <a id="AddComment" class="btn-floating right btn-large waves-effect waves-light teal lighten-1"><i class="material-icons">add</i></a>
+                <p>&nbsp</p>
+                <p>&nbsp</p>
+                </form>
+             </div>
+           </div>
+         </div>
+
+       </div>
+
+
+
+
+  </body>
+
+
+
+</html>

@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" type="text/css" href="top.css">
 <link rel="stylesheet" type="text/css" href="content.css">
+<script type="text/javascript" src="jQ.js"></script>
 
 
 
@@ -28,13 +29,14 @@
     </form>
   </span>
 
+<div class="nav">
   <span style= "display:inline-block;width:12%; text-align:right;padding-right: 0%; ">
         <a href="" class="top-right-button">Log in</a>
   </span>
   <span style= "display:inline-block;width:12%; text-align:right;padding-left: 0px;; padding-right: 2px;">
         <a href="" class="top-right-button">Sign-up</a>
   </span>
-
+</div>
 
  </div><!-- Top elements ended here -->
 
@@ -47,36 +49,51 @@
      <p class="bigTitle"><h1><b>Log in</b></h1></p>
      <br>
      <div class="">
-  <form class="">
-
-    <div class="">
-      <div class="">
-        <input id="email" placeholder="Email" type="text">
-        <label for="email"></label>
-      </div>
-    </div>
-
-    <br>
-
-    <div class="">
-      <div class="">
-        <input id="password" placeholder="password "type="password">
-        <label for="password"></label>
-      </div>
-    </div>
-
-
-
-    </div>
-    <br>
-    <button value="find" class="findButton">Login</button>
-  </form>
+       <form id="login_form" class="col m12" method="post" action="http://localhost:3000/api/login">
+         <div class="card white darken-1">
+           <div class="card-content">
+             <h5>Log in</h5>
+             <div class="row">
+               <div class="input-field col s12">
+                 <i class="material-icons prefix">account_circle</i>
+                 <input name="email" id="email" type="text" class="validate">
+                 <label for="email">Email</label>
+               </div>
+               <div class="input-field col s12">
+                 <i class="material-icons prefix">lock</i>
+                 <input name="password" id="password" type="password" class="validate">
+                 <label for="password">Password</label>
+               </div>
+               <div class="input-field col s6">
+       <!--											<a id="signBtn" class="waves-effect waves-light btn">Sign in</a> -->
+                 <button id="signBtn" class="waves-effect waves-light btn">Sign in</button>
+               </div>
+               <div class="input-field col s12">
+                 <p>Forgot password ?<a href="#"> Click here</a></p>
+               </div>
+             </div>
+           </div>
+         </div>
+       </form>
 </div>
 
 
 
    </div>
  </div>
+<script>
+  $('#signBtn').click(function(){
+  var loginResult = $.post('http://localhost:3000/api/login', $('#login_form').serialize(), function(){
+    document.location.href = 'home.html?login=true';
+  })
+  console.log(loginResult);
+})
+
+
+
+
+</script>
+
 
 </body>
 </html>

@@ -1,0 +1,36 @@
+.DFSAVCsavSAnav {
+  background-color: #  inherit !important;
+}
+
+i.icon-lighten{
+    color: #26a69a;
+}
+.ProfDetails{
+  color:grey;
+}
+.profInsideDetails{
+  color: black;
+}
+
+.Headers11{
+  font-size: 150%;
+  color: #26a69a;
+
+}
+
+.SliderWords {
+    text-shadow: 2px 2px black;
+
+}
+
+/* label color */
+   .input-field label {
+     color:white;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #b2dfdb;
+   }
+   #UserComments:focus + label {
+     color: #b2dfdb;
+   }
